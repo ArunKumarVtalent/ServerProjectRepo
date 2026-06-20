@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    {% block css %}{% endblock %}
+    <title>BMW</title>
+</head>
+<body>
+    <!--Header Start-->
+        <div class="row" style="background-color: #4ba8d3;">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a href="{% url 'home' %}">
+                            <img style="width:100px;padding:10px;" src="{% static 'Images/bmwlogo2.png'%}" alt="Logo" />
+                        </a>                        
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="row" style="margin-top: 65px;">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2"><a style="color:white;font-weight: bold;font-size:20px;text-decoration: none;" class="redirectLinksStyle" href="{% url 'home' %}">Home</a></div>
+                            <div class="col-sm-4"><a style="color:white;font-weight: bold;font-size:20px;text-decoration: none;" class="redirectLinksStyle" href="{% url 'create' %}">Create a new Employee</a></div>
+                            <div class="col-sm-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Header End-->
+
+        <!--Content Start-->
+        <div class="row">
+            <div class="col-sm-12">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <!--Content End-->
+
+        <!--Footer Start-->
+        <div class="row"  style="background-color: #4ba8d3;">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5">
+                        <span style="color:whitesmoke;font-weight: bold;">@copyright "htts://www.bmw.com"</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a href="#">
+                            <img style="width:20px" src="{% static 'Images/fb.png'%}" alt="fb" />
+                        </a>
+                    </div>
+                    <div class="col-sm-1">
+                        <a href="#">
+                            <img style="width:20px" src="{% static 'Images/gg.png'%}" alt="gg" />
+                        </a>
+                    </div>
+                    <div class="col-sm-1">
+                        <a href="#">
+                            <img style="width:20px" src="{% static 'Images/fb.png'%}" alt="fb" />
+                        </a>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </div>
+        <!--Footer End-->
+    
+</body>
+</html>

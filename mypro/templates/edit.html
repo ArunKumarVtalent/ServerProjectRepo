@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <!--Content Start-->
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row" style="text-align: center;margin-bottom: 20px;color:blue;background-color: greenyellow;">
+                <div class="col-sm-12">
+                    <h1>Employee Updation</h1>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-2"><span style="font-weight: bold;">EmpId</span></div>
+                    <div class="col-sm-3">
+                        <input type="hidden" name="EmpId" value="{{emp.EmpId}}" class="form-control" id="txtEmpId" placeholder="Enter employee id...!" />
+                        <span>{{emp.EmpId}}</span>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Name</span></div>
+                <div class="col-sm-3">
+                    <input type="text" value="{{emp.Ename}}" class="form-control" id="txtName" name="Ename" placeholder="Enter name...!" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Password</span></div>
+                <div class="col-sm-3">
+                    <input type="password" value="{{emp.Password}}" class="form-control" id="txtPassword" name="Password"
+                        placeholder="Enter password...!" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Gender</span></div>
+                <div class="col-sm-3">
+                    <input type="radio" id="rbtnMale" {% if emp.Gender == 'Male' %} checked {% endif %} name="Gender" value="Male"><span>Male</span>
+                    <input type="radio" id="rbtnFemale" {% if emp.Gender == 'Female' %} checked {% endif %} name="Gender" value="Female"><span>Female</span>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Phone</span></div>
+                <div class="col-sm-3">
+                    <input type="text" value="{{emp.Phone}}" class="form-control" id="txtPhone" name="Phone" placeholder="Enter phone...!" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Email</span></div>
+                <div class="col-sm-3">
+                    <input type="text" value="{{emp.Email}}" class="form-control" id="txtEmail" name="Email" placeholder="Enter email...!" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">DOB</span></div>
+                <div class="col-sm-3">
+                    <input type="date" value="{{emp.DOB}}" class="form-control" id="txtDob" name="DOB" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Salary</span></div>
+                <div class="col-sm-3">
+                    <input type="text" value="{{emp.Salary}}" class="form-control" id="txtSalary" name="Salary"
+                        placeholder="Enter salary...!" />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Address</span></div>
+                <div class="col-sm-3">
+                    <textarea class="form-control" id="txtAddress" rows="3" name="Address"
+                        placeholder="Enter address...!">{{emp.Address}}
+                    </textarea>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"><span style="font-weight: bold;">Department</span></div>
+                <div class="col-sm-3">
+                    <select id="ddlDeptNo" class="form-control" name="DeptNo">
+                        <option value="0">-Select Department-</option>
+                         {% for dept in deptList %}
+                            <option value="{{ dept.DeptNo }}"
+                                {% if dept.DeptNo == emp.DeptNo.DeptNo %}
+                                    selected
+                                {% endif %}>
+                                {{ dept.Dname }}
+                            </option>
+                        {% endfor %}                   
+                    </select>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row" style="margin-bottom: 20px;text-align: center;">
+                <div class="col-sm-12">
+                    <input type="submit" name="Update" class="btn btn-primary" id="btnRegister" value="Update" />
+                    <input type="submit" name="Update" class="btn btn-danger" id="btnCancel" value="Cancel" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Content End-->
+</form>
+{% endblock %}
